@@ -81,7 +81,7 @@ Let's start by building the project and then running the library from a node.
 
 ```sh
 $ npm run build
-$ node .tools/test.js
+$ node .tools/evaluate-file.js
 ```
 
 ### Commands
