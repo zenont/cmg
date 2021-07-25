@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.settings.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "incremental": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "typings",
+    "declarationMap": true
+  },
+  "exclude": [
+    "node_modules",
+    "**/dist",
+    "**/lib",
+    "**/typings",
+    "**/bin",
+    "**/main",
+    "**/module",
+    "**/__tests__",
+    "**/__stories__",
+    "**/*.spec.ts"
+  ],
+  "include": ["**/*.ts", "**/*.tsx"]
+}

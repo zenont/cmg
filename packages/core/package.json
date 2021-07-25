@@ -1,0 +1,13 @@
+{
+    "name": "@365-widgets/core",
+    "version": "0.0.0",
+    "main": "main/index.js",
+    "module": "module/index.js",
+    "sideEffects": false,
+    "types": "typings/index.d.ts",
+    "scripts": {
+      "build": "rollup -c rollup.config.js",
+      "watch": "rollup -c rollup.config.js --watch"
+    }
+  }
+  

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`log-parser parsers errors when parsing the entry line 1`] = `
+Object {
+  "payload": [Error: Unexpected or invalid line at 1: [2007-04-05T22:00 aab]],
+  "type": "entry",
+}
+`;
+
+exports[`log-parser parsers errors when parsing the reference line 1`] = `
+Object {
+  "payload": [Error: Unexpected or invalid line at 1: [reference aa 45.0 6]],
+  "type": "reference",
+}
+`;
+
+exports[`log-parser parsers errors when parsing the sensor line 1`] = `
+Object {
+  "payload": [Error: Unexpected or invalid line at 1: [thermometer]],
+  "type": "sensor",
+}
+`;
+
+exports[`log-parser parsers parses the entry line 1`] = `
+Object {
+  "payload": 72.4,
+  "type": "entry",
+}
+`;
+
+exports[`log-parser parsers parses the reference line 1`] = `
+Object {
+  "payload": Object {
+    "humidity": 45,
+    "ppm": 6,
+    "temperature": 70,
+  },
+  "type": "reference",
+}
+`;
+
+exports[`log-parser parsers parses the sensor line 1`] = `
+Object {
+  "payload": Object {
+    "name": "temp-1",
+    "type": "thermometer",
+  },
+  "type": "sensor",
+}
+`;

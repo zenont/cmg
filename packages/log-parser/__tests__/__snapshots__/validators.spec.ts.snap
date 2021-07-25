@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`log-parser evaluator validates the humidity sensor and is "discard" 1`] = `"discard"`;
+
+exports[`log-parser evaluator validates the humidity sensor and is "keep" 1`] = `"keep"`;
+
+exports[`log-parser evaluator validates the temperature sensor and is "precise" 1`] = `"precise"`;
+
+exports[`log-parser evaluator validates the temperature sensor and is "ultra precise" 1`] = `"ultra precise"`;
+
+exports[`log-parser evaluator validates the temperature sensor and is "very precise" 1`] = `"precise"`;

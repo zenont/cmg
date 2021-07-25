@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`log-parser evaluator evaluates the log file 1`] = `
+Object {
+  "hum-1": "keep",
+  "hum-2": "discard",
+  "mon-1": "keep",
+  "mon-2": "discard",
+  "temp-1": "precise",
+  "temp-2": "ultra precise",
+}
+`;

@@ -1,0 +1,356 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`log-parser io reads the file lines 1`] = `
+Array [
+  Array [
+    Object {
+      "payload": Object {
+        "humidity": 45,
+        "ppm": 6,
+        "temperature": 70,
+      },
+      "type": "reference",
+    },
+    1,
+    "reference 70.0 45.0 6",
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "name": "temp-1",
+        "type": "thermometer",
+      },
+      "type": "sensor",
+    },
+    2,
+    "thermometer temp-1",
+  ],
+  Array [
+    Object {
+      "payload": 72.4,
+      "type": "entry",
+    },
+    3,
+    "2007-04-05T22:00 72.4",
+  ],
+  Array [
+    Object {
+      "payload": 76,
+      "type": "entry",
+    },
+    4,
+    "2007-04-05T22:01 76.0",
+  ],
+  Array [
+    Object {
+      "payload": 79.1,
+      "type": "entry",
+    },
+    5,
+    "2007-04-05T22:02 79.1",
+  ],
+  Array [
+    Object {
+      "payload": 75.6,
+      "type": "entry",
+    },
+    6,
+    "2007-04-05T22:03 75.6",
+  ],
+  Array [
+    Object {
+      "payload": 71.2,
+      "type": "entry",
+    },
+    7,
+    "2007-04-05T22:04 71.2",
+  ],
+  Array [
+    Object {
+      "payload": 71.4,
+      "type": "entry",
+    },
+    8,
+    "2007-04-05T22:05 71.4",
+  ],
+  Array [
+    Object {
+      "payload": 69.2,
+      "type": "entry",
+    },
+    9,
+    "2007-04-05T22:06 69.2",
+  ],
+  Array [
+    Object {
+      "payload": 65.2,
+      "type": "entry",
+    },
+    10,
+    "2007-04-05T22:07 65.2",
+  ],
+  Array [
+    Object {
+      "payload": 62.8,
+      "type": "entry",
+    },
+    11,
+    "2007-04-05T22:08 62.8",
+  ],
+  Array [
+    Object {
+      "payload": 61.4,
+      "type": "entry",
+    },
+    12,
+    "2007-04-05T22:09 61.4",
+  ],
+  Array [
+    Object {
+      "payload": 64,
+      "type": "entry",
+    },
+    13,
+    "2007-04-05T22:10 64.0",
+  ],
+  Array [
+    Object {
+      "payload": 67.5,
+      "type": "entry",
+    },
+    14,
+    "2007-04-05T22:11 67.5",
+  ],
+  Array [
+    Object {
+      "payload": 69.4,
+      "type": "entry",
+    },
+    15,
+    "2007-04-05T22:12 69.4",
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "name": "temp-2",
+        "type": "thermometer",
+      },
+      "type": "sensor",
+    },
+    16,
+    "thermometer temp-2",
+  ],
+  Array [
+    Object {
+      "payload": 69.5,
+      "type": "entry",
+    },
+    17,
+    "2007-04-05T22:01 69.5",
+  ],
+  Array [
+    Object {
+      "payload": 70.1,
+      "type": "entry",
+    },
+    18,
+    "2007-04-05T22:02 70.1",
+  ],
+  Array [
+    Object {
+      "payload": 71.3,
+      "type": "entry",
+    },
+    19,
+    "2007-04-05T22:03 71.3",
+  ],
+  Array [
+    Object {
+      "payload": 71.5,
+      "type": "entry",
+    },
+    20,
+    "2007-04-05T22:04 71.5",
+  ],
+  Array [
+    Object {
+      "payload": 69.8,
+      "type": "entry",
+    },
+    21,
+    "2007-04-05T22:05 69.8",
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "name": "hum-1",
+        "type": "humidity",
+      },
+      "type": "sensor",
+    },
+    22,
+    "humidity hum-1",
+  ],
+  Array [
+    Object {
+      "payload": 45.2,
+      "type": "entry",
+    },
+    23,
+    "2007-04-05T22:04 45.2",
+  ],
+  Array [
+    Object {
+      "payload": 45.3,
+      "type": "entry",
+    },
+    24,
+    "2007-04-05T22:05 45.3",
+  ],
+  Array [
+    Object {
+      "payload": 45.1,
+      "type": "entry",
+    },
+    25,
+    "2007-04-05T22:06 45.1",
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "name": "hum-2",
+        "type": "humidity",
+      },
+      "type": "sensor",
+    },
+    26,
+    "humidity hum-2",
+  ],
+  Array [
+    Object {
+      "payload": 44.4,
+      "type": "entry",
+    },
+    27,
+    "2007-04-05T22:04 44.4",
+  ],
+  Array [
+    Object {
+      "payload": 43.9,
+      "type": "entry",
+    },
+    28,
+    "2007-04-05T22:05 43.9",
+  ],
+  Array [
+    Object {
+      "payload": 44.9,
+      "type": "entry",
+    },
+    29,
+    "2007-04-05T22:06 44.9",
+  ],
+  Array [
+    Object {
+      "payload": 43.8,
+      "type": "entry",
+    },
+    30,
+    "2007-04-05T22:07 43.8",
+  ],
+  Array [
+    Object {
+      "payload": 42.1,
+      "type": "entry",
+    },
+    31,
+    "2007-04-05T22:08 42.1",
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "name": "mon-1",
+        "type": "monoxide",
+      },
+      "type": "sensor",
+    },
+    32,
+    "monoxide mon-1",
+  ],
+  Array [
+    Object {
+      "payload": 5,
+      "type": "entry",
+    },
+    33,
+    "2007-04-05T22:04 5",
+  ],
+  Array [
+    Object {
+      "payload": 7,
+      "type": "entry",
+    },
+    34,
+    "2007-04-05T22:05 7",
+  ],
+  Array [
+    Object {
+      "payload": 9,
+      "type": "entry",
+    },
+    35,
+    "2007-04-05T22:06 9",
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "name": "mon-2",
+        "type": "monoxide",
+      },
+      "type": "sensor",
+    },
+    36,
+    "monoxide mon-2",
+  ],
+  Array [
+    Object {
+      "payload": 2,
+      "type": "entry",
+    },
+    37,
+    "2007-04-05T22:04 2",
+  ],
+  Array [
+    Object {
+      "payload": 4,
+      "type": "entry",
+    },
+    38,
+    "2007-04-05T22:05 4",
+  ],
+  Array [
+    Object {
+      "payload": 10,
+      "type": "entry",
+    },
+    39,
+    "2007-04-05T22:06 10",
+  ],
+  Array [
+    Object {
+      "payload": 8,
+      "type": "entry",
+    },
+    40,
+    "2007-04-05T22:07 8",
+  ],
+  Array [
+    Object {
+      "payload": 6,
+      "type": "entry",
+    },
+    41,
+    "2007-04-05T22:08 6",
+  ],
+]
+`;
