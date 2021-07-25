@@ -1,0 +1,1 @@
+This is the log-parser library, please see root README

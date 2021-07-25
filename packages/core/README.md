@@ -1,0 +1,1 @@
+This core library contains constants, types and utilities to be used across all libraries. Please see root README

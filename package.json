@@ -9,6 +9,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "cleanup": "rimraf packages/**/lib packages/**/dist packages/**/typings packages/**/bin packages/**/main packages/**/module packages/**/bin packages/**/*.tsbuildinfo packages/**/node_modules",
     "lint:rules": "eslint --fix . --ext .js --ext .jsx --ext .ts --ext .tsx",
     "lint:format": "prettier --write \"./**/**.{json,scss,css,html}\"",
     "lint": "run-s lint:*",
@@ -17,7 +18,7 @@
     "watch": "run-p watch:*",
     "build:typings": "tsc -b tsconfig.build.json",
     "build:packages": "lerna run --stream build",
-    "build": "run-s build:*"
+    "build": "run-s cleanup build:*"
   },
   "keywords": [
     "365",
