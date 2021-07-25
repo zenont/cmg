@@ -1,0 +1,49 @@
+{
+  "extends": "./tsconfig.settings.json",
+  "compilerOptions": {
+    "strict": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "target": "ES2017",
+    "lib": ["esnext", "DOM"],
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "jsx": "react",
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@365-widgets/*": ["packages/*/src/"]
+    }
+  },
+  "include": [
+    "**/src",
+    "**/src/*.d.ts",
+    "**/*.json",
+    "**/__tests__",
+    "**/jaguar-*/*.js",
+    "**/jaguar-*/*.ts",
+    "*.js",
+    "@types/*.ts",
+    "**/@types/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/node_modules",
+    "**/dist",
+    "**/lib",
+    "**/bin",
+    "**/typings",
+    "**/bin",
+    "**/main",
+    "**/module",
+    "**/.buildcache",
+    "**/android",
+    "**/ios",
+    "**/amplify",
+    "**/jaguar-ui/www",
+    "**/jaguar-ui/loader",
+    ".webpack",
+    "cdk.out"
+  ]
+}

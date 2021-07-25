@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES6",
+    "strict": true,
+    "composite": true,
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "jsx": "preserve"
+  },
+  "exclude": [
+    "node_modules",
+    "**/dist",
+    "**/lib",
+    "**/typings",
+    "**/bin",
+    "**/main",
+    "**/module",
+    "**/.buildcache",
+    "**/__tests__",
+    "**/__stories__",
+    "**/*.spec.ts",
+    "**/node_modules"
+  ]
+}

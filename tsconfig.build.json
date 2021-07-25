@@ -1,0 +1,29 @@
+{
+  "extends": "./tsconfig.settings.json",
+  "compilerOptions": {
+    "composite": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "typings",
+    "declarationMap": true,
+    "incremental": true
+  },
+  "files": [],
+  "references": [
+    { "path": "packages/core/tsconfig.build.json" },
+    { "path": "packages/log-parser/tsconfig.build.json" }
+  ],
+  "exclude": [
+    "node_modules",
+    "**/dist",
+    "**/lib",
+    "**/typings",
+    "**/bin",
+    "**/main",
+    "**/module",
+    "**/.buildcache",
+    "**/__tests__",
+    "**/__stories__",
+    "**/*.spec.ts",
+    "**/node_modules"
+  ]
+}
