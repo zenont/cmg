@@ -105,7 +105,7 @@ This is a monorepo managed with [lerna](https://github.com/lerna/lerna/blob/main
 
 Here are some assumptions that I made when reading the instructions:
 
-- This is a NodeJS library that will be delivered to production, but with an alloted time of 2-4 hours; thus I submit this repo as a PoC.
+- This is a NodeJS library that will be delivered to production, but but due to the alloted time of 2-4 hours I submit this repo as a PoC.
 - The log file structure, is tree-like as follows:
 ```
 1 └── reference (root)
@@ -113,17 +113,17 @@ Here are some assumptions that I made when reading the instructions:
 3      └── entries (leafs)
 ```
 - There is no indication that the log files will be split by the `reference` line, so an assumption was made that multiple _trees_ will appear in a single file; this is typical, as most log files are split by their size.
-- The log file structure and generation is not owned by GMC, therefore some validation will have to take place on the structure of the validation.
+- The log file structure and generation are not owned by CMG; therefore, some validation will have to take place on the structure of the log file.
 - Validating the file entries is specially important since this is a QA tool, fail fast instead of emitting suspect results.
 - Log files can be large, so the parsing has to account for performance.
 - This library only works in NodeJS and not the browser.
 
 ### Limitations
 
-Here are some limitations that my solution has before it could be considered production worthy.
+Here are some limitations that my solution has to account for before it can be considered production worthy.
 
-- The `evaluateLogFile` function takes in a string variable that is the content of the log file itself; I believe a better approach would be to pass a file path and/or stream.
-- The sensor types are pretty hardcoded; while keeping good defaults, I would prefer supporting a more _config_ driven approach, were we could pass the sensor types, thresholds and even validators functions in an optional config object. This can have the potential of parsing one-off sensors, and even selecting which sensors we want to parse and which to ignore. Also, the sensor thresholds could come from a different source such as a database or spec file.
+- The `evaluateLogFile` function takes in a string variable that is the contents of the log file itself; I believe a better approach would be to pass a file path and/or stream.
+- The sensor types are pretty hardcoded; while keeping good defaults, I would prefer supporting a more _config_ driven approach, were we could pass the sensor types, thresholds and even validators functions as an optional config object. This can have the potential of parsing one-off sensors, and even selecting which sensors we want to parse and which to ignore. Also, the sensor thresholds could come from a different source such as a database or spec file.
 - This library is NodeJS only, so it wouldn't work in a browser environment; the library could be made isomorphic and support the FileAPI from the browser if such a feature was required.
 - I would've liked to add *JDocs*, at least, in all exported functions, but was running out of time.
-- Obviously the monorepo approach is overkill for a PoC, but I would imagine that this library would exists amongst other and there could even be some reusability, this is showcased by using the `core` package that signifies reusing the *core* BLL from _365-Widgets_.
+- Obviously the monorepo approach is overkill for a PoC, but I would imagine that this library would coexists amongst other libraries and there could/should be some reusability and separation of concerns. This is showcased by using the `core` package that signifies reusing the *core* BLL from _365-Widgets_.
