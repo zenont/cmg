@@ -77,7 +77,7 @@ monoxide mon-2
 
 ## Getting Started
 
-Let's start by building the project and then running the library from a node.
+Let's start by building the project and then running the library from node.
 
 ```sh
 $ npm run build
