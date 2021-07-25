@@ -1,1 +1,1 @@
-This core library contains constants, types and utilities to be used across all libraries.
+This is the log-parser library, please see root README

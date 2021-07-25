@@ -4,27 +4,8 @@
 
 - [About](#about)
 - [Getting Started](#getting-started)
-- [How It Works](#how-it-works)
-- Commands
-  - [`npm run test`](./commands/publish#readme)
-  - [`lerna version`](./commands/version#readme)
-  - [`lerna bootstrap`](./commands/bootstrap#readme)
-  - [`lerna list`](./commands/list#readme)
-  - [`lerna changed`](./commands/changed#readme)
-  - [`lerna diff`](./commands/diff#readme)
-  - [`lerna exec`](./commands/exec#readme)
-  - [`lerna run`](./commands/run#readme)
-  - [`lerna init`](./commands/init#readme)
-  - [`lerna add`](./commands/add#readme)
-  - [`lerna clean`](./commands/clean#readme)
-  - [`lerna import`](./commands/import#readme)
-  - [`lerna link`](./commands/link#readme)
-  - [`lerna create`](./commands/create#readme)
-  - [`lerna info`](./commands/info#readme)
-- [Concepts](#concepts)
-- [Lerna.json](#lernajson)
-- [Global Flags](./core/global-options)
-- [Filter Flags](./core/filter-options)
+- [Assumptions](#assumptions)
+- [Limitations](#limitations)
 
 ## About
 
@@ -103,13 +84,21 @@ $ npm run build
 $ node .tools/test.js
 ```
 
+### Commands
+
+```sh
+  npm run test # runs the unit tests
+  npm run watch # runs the library in watch mode
+  npm run build # builds the project
+```
+
 This is a monorepo managed with [lerna](https://github.com/lerna/lerna/blob/main/README.md).
 
 ```
-cmg/
-  packages/
-    core/
-    log-parser/
+└── cmg/
+  └── packages/
+    └── core/
+    └── log-parser/
 ```
 
 ## Assumptions
@@ -119,195 +108,22 @@ Here are some assumptions that I made when reading the instructions:
 - This is a NodeJS library that will be delivered to production, but with an alloted time of 2-4 hours; thus I submit this repo as a PoC.
 - The log file structure, is tree-like as follows:
 ```
-1  reference (root)
-2    sensor
-3      entries (leafs)
+1 └── reference (root)
+2    └── sensor
+3      └── entries (leafs)
 ```
 - There is no indication that the log files will be split by the `reference` line, so an assumption was made that multiple _trees_ will appear in a single file; this is typical, as most log files are split by their size.
 - The log file structure and generation is not owned by GMC, therefore some validation will have to take place on the structure of the validation.
 - Validating the file entries is specially important since this is a QA tool, fail fast instead of emitting suspect results.
 - Log files can be large, so the parsing has to account for performance.
+- This library only works in NodeJS and not the browser.
 
 ### Limitations
 
 Here are some limitations that my solution has before it could be considered production worthy.
 
-- The `
-
-### Independent mode
-
-`lerna init --independent`
-
-Independent mode Lerna projects allows maintainers to increment package versions independently of each other. Each time you publish, you will get a prompt for each package that has changed to specify if it's a patch, minor, major or custom change.
-
-Independent mode allows you to more specifically update versions for each package and makes sense for a group of components. Combining this mode with something like [semantic-release](https://github.com/semantic-release/semantic-release) would make it less painful. (There is work on this already at [atlassian/lerna-semantic-release](https://github.com/atlassian/lerna-semantic-release)).
-
-> Set the `version` key in `lerna.json` to `independent` to run in independent mode.
-
-## Troubleshooting
-
-If you encounter any issues while using Lerna please check out our [Troubleshooting](doc/troubleshooting.md)
-document where you might find the answer to your problem.
-
-## Frequently asked questions
-
-See [FAQ.md](FAQ.md).
-
-## Concepts
-
-Lerna will log to a `lerna-debug.log` file (same as `npm-debug.log`) when it encounters an error running a command.
-
-Lerna also has support for [scoped packages](https://docs.npmjs.com/misc/scope).
-
-Run `lerna --help` to see all available commands and options.
-
-### lerna.json
-
-```json
-{
-  "version": "1.1.3",
-  "npmClient": "npm",
-  "command": {
-    "publish": {
-      "ignoreChanges": ["ignored-file", "*.md"],
-      "message": "chore(release): publish",
-      "registry": "https://npm.pkg.github.com"
-    },
-    "bootstrap": {
-      "ignore": "component-*",
-      "npmClientArgs": ["--no-package-lock"]
-    }
-  },
-  "packages": ["packages/*"]
-}
-```
-
-- `version`: the current version of the repository.
-- `npmClient`: an option to specify a specific client to run commands with (this can also be specified on a per command basis). Change to `"yarn"` to run all commands with yarn. Defaults to "npm".
-- `command.publish.ignoreChanges`: an array of globs that won't be included in `lerna changed/publish`. Use this to prevent publishing a new version unnecessarily for changes, such as fixing a `README.md` typo.
-- `command.publish.message`: a custom commit message when performing version updates for publication. See [@lerna/version](commands/version#--message-msg) for more details.
-- `command.publish.registry`: use it to set a custom registry url to publish to instead of
-  npmjs.org, you must already be authenticated if required.
-- `command.bootstrap.ignore`: an array of globs that won't be bootstrapped when running the `lerna bootstrap` command.
-- `command.bootstrap.npmClientArgs`: array of strings that will be passed as arguments directly to `npm install` during the `lerna bootstrap` command.
-- `command.bootstrap.scope`: an array of globs that restricts which packages will be bootstrapped when running the `lerna bootstrap` command.
-- `packages`: Array of globs to use as package locations.
-
-The packages config in `lerna.json` is a list of globs that match directories containing a `package.json`, which is how lerna recognizes "leaf" packages (vs the "root" `package.json`, which is intended to manage the dev dependencies and scripts for the entire repo).
-
-By default, lerna initializes the packages list as `["packages/*"]`, but you can also use another directory such as `["modules/*"]`, or `["package1", "package2"]`. The globs defined are relative to the directory that `lerna.json` lives in, which is usually the repository root. The only restriction is that you can't directly nest package locations, but this is a restriction shared by "normal" npm packages as well.
-
-For example, `["packages/*", "src/**"]` matches this tree:
-
-```
-packages/
-├── foo-pkg
-│   └── package.json
-├── bar-pkg
-│   └── package.json
-├── baz-pkg
-│   └── package.json
-└── qux-pkg
-    └── package.json
-src/
-├── admin
-│   ├── my-app
-│   │   └── package.json
-│   ├── stuff
-│   │   └── package.json
-│   └── things
-│       └── package.json
-├── profile
-│   └── more-things
-│       └── package.json
-├── property
-│   ├── more-stuff
-│   │   └── package.json
-│   └── other-things
-│       └── package.json
-└── upload
-    └── other-stuff
-        └── package.json
-```
-
-Locating leaf packages under `packages/*` is considered a "best-practice", but is not a requirement for using Lerna.
-
-#### Legacy Fields
-
-Some `lerna.json` fields are no longer in use. Those of note include:
-
-- `lerna`: originally used to indicate the current version of Lerna. [Made obsolete](https://github.com/lerna/lerna/pull/1122) and [removed](https://github.com/lerna/lerna/pull/1225) in v3
-
-### Common `devDependencies`
-
-Most `devDependencies` can be pulled up to the root of a Lerna repo with `lerna link convert`
-
-The above command will automatically hoist things and use relative `file:` specifiers.
-
-Hoisting has a few benefits:
-
-- All packages use the same version of a given dependency
-- Can keep dependencies at the root up-to-date with an automated tool such as [Snyk](https://snyk.io/)
-- Dependency installation time is reduced
-- Less storage is needed
-
-Note that `devDependencies` providing "binary" executables that are used by
-npm scripts still need to be installed directly in each package where they're
-used.
-
-For example the `nsp` dependency is necessary in this case for `lerna run nsp`
-(and `npm run nsp` within the package's directory) to work correctly:
-
-```json
-{
-  "scripts": {
-    "nsp": "nsp"
-  },
-  "devDependencies": {
-    "nsp": "^2.3.3"
-  }
-}
-```
-
-### Git Hosted Dependencies
-
-Lerna allows target versions of local dependent packages to be written as a [git remote url](https://docs.npmjs.com/cli/install) with a `committish` (e.g., `#v1.0.0` or `#semver:^1.0.0`) instead of the normal numeric version range.
-This allows packages to be distributed via git repositories when packages must be private and a [private npm registry is not desired](https://www.dotconferences.com/2016/05/fabien-potencier-monolithic-repositories-vs-many-repositories).
-
-Please note that lerna does _not_ perform the actual splitting of git history into the separate read-only repositories. This is the responsibility of the user. (See [this comment](https://github.com/lerna/lerna/pull/1033#issuecomment-335894690) for implementation details)
-
-```
-// packages/pkg-1/package.json
-{
-  name: "pkg-1",
-  version: "1.0.0",
-  dependencies: {
-    "pkg-2": "github:example-user/pkg-2#v1.0.0"
-  }
-}
-
-// packages/pkg-2/package.json
-{
-  name: "pkg-2",
-  version: "1.0.0"
-}
-```
-
-In the example above,
-
-- `lerna bootstrap` will properly symlink `pkg-2` into `pkg-1`.
-- `lerna publish` will update the committish (`#v1.0.0`) in `pkg-1` when `pkg-2` changes.
-
-### README Badge
-
-Using Lerna? Add a README badge to show it off: [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
-
-```
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
-```
-
-### Wizard
-
-If you prefer some guidance for cli (in case you're about to start using lerna or introducing it to a new team), you might like [lerna-wizard](https://github.com/szarouski/lerna-wizard). It will lead you through a series of well-defined steps:
-
-![lerna-wizard demo image](https://raw.githubusercontent.com/szarouski/lerna-wizard/2e269fb5a3af7100397a1f874cea3fa78089486e/demo.png)
+- The `evaluateLogFile` function takes in a string variable that is the content of the log file itself; I believe a better approach would be to pass a file path and/or stream.
+- The sensor types are pretty hardcoded; while keeping good defaults, I would prefer supporting a more _config_ driven approach, were we could pass the sensor types, thresholds and even validators functions in an optional config object. This can have the potential of parsing one-off sensors, and even selecting which sensors we want to parse and which to ignore. Also, the sensor thresholds could come from a different source such as a database or spec file.
+- This library is NodeJS only, so it wouldn't work in a browser environment; the library could be made isomorphic and support the FileAPI from the browser if such a feature was required.
+- I would've liked to add *JDocs*, at least, in all exported functions, but was running out of time.
+- Obviously the monorepo approach is overkill for a PoC, but I would imagine that this library would exists amongst other and there could even be some reusability, this is showcased by using the `core` package that signifies reusing the *core* BLL from _365-Widgets_.
